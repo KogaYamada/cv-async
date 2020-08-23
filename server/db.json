@@ -1,15 +1,33 @@
-{
-  "users": [
-    { "name": "taro", "email": "taro@example.com", "skills": ["js", "react"] },
-    {
-      "name": "ziro",
-      "email": "ziro@example.com",
-      "skills": ["js", "react", "python"]
-    },
-    {
-      "name": "koga",
-      "email": "koga@example.com",
-      "skills": ["js", "react", "vue"]
-    }
-  ]
-}
+[
+  {
+    "id": 0,
+    "name": "taro",
+    "email": "taro@example.com",
+    "skills": ["js", "react"]
+  },
+  {
+    "id": 1,
+    "name": "ziro",
+    "email": "ziro@example.com",
+    "skills": ["js", "react", "python"]
+  },
+  {
+    "id": 2,
+    "name": "koga",
+    "email": "koga@example.com",
+    "skills": ["js", "react", "vue"]
+  },
+  { "id": 3, "name": "john", "email": "joooohn@example.com", "skills": [] },
+  {
+    "id": 4,
+    "name": "Bob",
+    "email": "Bob@example.com",
+    "skills": ["Vue.js", "Node.js", "express"]
+  },
+  {
+    "id": 5,
+    "name": "Harry",
+    "email": "Harry@example.com",
+    "skills": ["Docker", "JavaScript", "Node.js", "CSS"]
+  }
+]
