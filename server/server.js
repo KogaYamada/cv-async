@@ -33,47 +33,17 @@ app.get('/', (req, res) => {
   res.send(html);
 });
 
-app.get('/user', (req, res) => {
-  const { apikey } = req.headers;
-  if (apikey !== 'key123') res.status(401).send('apikeyが間違っています');
-
-  res.json(users);
-});
-
-app.post('/user', async (req, res) => {
-  const { apikey } = req.headers;
-  if (apikey !== 'key123') res.status(401).send('apikeyが間違っています');
-  const { name, email, skills } = req.body;
-  try {
-    await newUser.save();
-  } catch (error) {
-    console.log('ERROR', error);
-    res.status(400).send('不正なリクエストです');
-  } finally {
-    res.send(newUser);
-  }
-});
-
-// app.get('/user', async (req, res) => {
-//   console.log('body', req.body);
-//   console.log('header', req.headers);
+// app.get('/user', (req, res) => {
 //   const { apikey } = req.headers;
 //   if (apikey !== 'key123') res.status(401).send('apikeyが間違っています');
-//   try {
-//     const users = await User.find();
-//     res.send(users);
-//   } catch (error) {
-//     res.status(400).send('不正なリクエストです');
-//   }
+
+//   res.json(users);
 // });
 
 // app.post('/user', async (req, res) => {
-//   console.log('body', req.body);
-//   console.log('header', req.headers);
 //   const { apikey } = req.headers;
 //   if (apikey !== 'key123') res.status(401).send('apikeyが間違っています');
 //   const { name, email, skills } = req.body;
-//   const newUser = new User({ name, email, skills });
 //   try {
 //     await newUser.save();
 //   } catch (error) {
@@ -83,6 +53,36 @@ app.post('/user', async (req, res) => {
 //     res.send(newUser);
 //   }
 // });
+
+app.get('/user', async (req, res) => {
+  console.log('body', req.body);
+  console.log('header', req.headers);
+  const { apikey } = req.headers;
+  if (apikey !== 'key123') res.status(401).send('apikeyが間違っています');
+  try {
+    const users = await User.find();
+    res.send(users);
+  } catch (error) {
+    res.status(400).send('不正なリクエストです');
+  }
+});
+
+app.post('/user', async (req, res) => {
+  console.log('body', req.body);
+  console.log('header', req.headers);
+  const { apikey } = req.headers;
+  if (apikey !== 'key123') res.status(401).send('apikeyが間違っています');
+  const { name, email, skills } = req.body;
+  const newUser = new User({ name, email, skills });
+  try {
+    await newUser.save();
+  } catch (error) {
+    console.log('ERROR', error);
+    res.status(400).send('不正なリクエストです');
+  } finally {
+    res.send(newUser);
+  }
+});
 
 app.listen(process.env.PORT || 8000, () => {
   console.log(`サーバー起動: http://localhost:${process.env.PORT || 8000}`);
