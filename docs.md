@@ -28,8 +28,6 @@ GET http://localhost:8000/user
     name: String,
     email: String,
     skills: Array,
-    _id: String,
-    __v: Number,
   },
 ];
 ```
@@ -61,8 +59,6 @@ POST http://localhost:8000/user
   {
     name: String,
     email: String,
-    skills: Array,
-    _id: String,
-    __v: Number,
+    skills?: Array,
   }；
 ```
